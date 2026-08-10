@@ -2,6 +2,10 @@
 
 ### Understanding Why AI Models Get Things Wrong — and How We Can Reduce It
 
+<div align="center">
+  <img src="./assets/llm.gif" width="500" alt="NeuraNova">
+</div>
+
 🎯 **This presentation covers:**
 
 * 🧠 What are LLM hallucinations?
@@ -23,13 +27,6 @@
 
 ---
 
-### 📑 Presentation
-
-🎞️ **PPT:** `LLM_Hallucinations.pptx`
-
-📌 Topics are explained visually with architectures, examples, and practical mitigation techniques.
-
----
 
 ### 🛠️ Key Technologies / Concepts
 
