@@ -9,6 +9,7 @@
 <img src="https://img.shields.io/badge/Deep%20Learning-FF6F00?style=for-the-badge" />
 <img src="https://img.shields.io/badge/LLMs-8A2BE2?style=for-the-badge" />
 <img src="https://img.shields.io/badge/GenAI-00A67E?style=for-the-badge" />
+<img width="552" height="555" alt="image" src="https://github.com/user-attachments/assets/84f60a36-46ef-499f-b561-ff454eace7f2" />
 
 <br><br>
 
