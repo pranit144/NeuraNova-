@@ -3,7 +3,7 @@
 ### Understanding Why AI Models Get Things Wrong — and How We Can Reduce It
 
 <div align="center">
-  <img src="./assets/llm.gif" width="500" alt="NeuraNova">
+  <img src="/assets/llm_gif.webp" width="500" alt="NeuraNova">
 </div>
 
 🎯 **This presentation covers:**
