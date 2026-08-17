@@ -1,0 +1,446 @@
+/* ==========================================================
+   viewer.css — PDF Viewer Styles
+   ========================================================== */
+
+/* ---------- Viewer Layout ---------- */
+.viewer-page {
+    min-height: 100vh;
+}
+
+.viewer-header {
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) var(--space-6);
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 50;
+}
+
+.viewer-header-inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+.viewer-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+}
+
+.viewer-lesson-number {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    background: var(--color-accent-bg);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.viewer-lesson-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------- Viewer Controls ---------- */
+.viewer-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+}
+
+.viewer-control-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.viewer-control-btn:hover {
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+}
+
+.viewer-control-btn:active {
+    transform: scale(0.95);
+}
+
+.viewer-control-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.viewer-zoom-display {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+    min-width: 50px;
+    text-align: center;
+    user-select: none;
+}
+
+.control-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border);
+    margin: 0 var(--space-1);
+}
+
+/* ---------- PDF Canvas Container ---------- */
+.viewer-canvas-container {
+    background: var(--color-bg-secondary);
+    display: flex;
+    justify-content: center;
+    padding: var(--space-6);
+    min-height: calc(100vh - var(--navbar-height) - 140px - 80px);
+    position: relative;
+}
+
+.viewer-canvas-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    padding: var(--space-4);
+    min-height: 100vh;
+    background: #1a1a2e;
+}
+
+.pdf-canvas-wrapper {
+    box-shadow: var(--shadow-xl);
+    background: white;
+    display: inline-block;
+    line-height: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.pdf-canvas-wrapper canvas {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+}
+
+/* ---------- PDF Loading ---------- */
+.viewer-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-20) 0;
+    gap: var(--space-4);
+    color: var(--color-text-muted);
+}
+
+.viewer-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.viewer-loading-text {
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.viewer-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-20) 0;
+    gap: var(--space-4);
+    color: var(--color-error);
+    text-align: center;
+}
+
+.viewer-error-icon {
+    font-size: 3rem;
+}
+
+.viewer-error h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.viewer-error p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 400px;
+}
+
+/* ---------- Page Navigation ---------- */
+.viewer-page-nav {
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-4) var(--space-6);
+}
+
+.viewer-page-nav-inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+.page-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.page-nav-btn:hover:not(:disabled) {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+}
+
+.page-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.page-nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.page-indicator {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    min-width: 100px;
+    text-align: center;
+}
+
+.page-jump-input {
+    width: 50px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+    transition: border-color var(--transition-fast);
+}
+
+.page-jump-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* ---------- Lesson Navigation ---------- */
+.viewer-lesson-nav {
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-6);
+}
+
+.viewer-lesson-nav-inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.lesson-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.lesson-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-fast);
+    min-height: 80px;
+    justify-content: center;
+}
+
+.lesson-nav-item:hover {
+    border-color: var(--color-accent-light);
+    background: var(--color-accent-bg);
+    color: inherit;
+}
+
+.lesson-nav-item.prev {
+    text-align: left;
+}
+
+.lesson-nav-item.next {
+    text-align: right;
+}
+
+.lesson-nav-item.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.lesson-nav-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.lesson-nav-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.lesson-nav-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.mark-complete-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 2px solid var(--color-border);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+}
+
+.mark-complete-btn:hover {
+    border-color: var(--color-success);
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.mark-complete-btn.completed {
+    border-color: var(--color-success);
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.mark-complete-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ---------- Fullscreen controls overlay ---------- */
+.fullscreen-controls {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 17, 23, 0.95);
+    padding: var(--space-4) var(--space-6);
+    z-index: 9999;
+    justify-content: center;
+    gap: var(--space-4);
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.fullscreen-controls.active {
+    display: flex;
+}
+
+.fullscreen-exit-btn {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 9999;
+    display: none;
+    padding: var(--space-2) var(--space-4);
+    background: rgba(13, 17, 23, 0.8);
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all var(--transition-fast);
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.fullscreen-exit-btn.active {
+    display: flex;
+}
+
+.fullscreen-exit-btn:hover {
+    background: rgba(13, 17, 23, 0.95);
+}
+
+/* ---------- Viewer page in fullscreen, hide other elements ---------- */
+body.viewer-fullscreen {
+    overflow: hidden;
+}
+
+body.viewer-fullscreen .sidebar,
+body.viewer-fullscreen .navbar,
+body.viewer-fullscreen .sidebar-overlay,
+body.viewer-fullscreen .viewer-header,
+body.viewer-fullscreen .viewer-lesson-nav {
+    display: none !important;
+}
+
+body.viewer-fullscreen .main-content {
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+}

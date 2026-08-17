@@ -1,0 +1,132 @@
+[
+    {
+        "folder": "phase-0",
+        "phase": 0,
+        "title": "AI Foundations",
+        "shortTitle": "Foundations",
+        "icon": "🤖",
+        "description": "From 'What is AI?' to understanding the landscape of modern artificial intelligence.",
+        "memeOnComplete": "Neuron successfully activated 🧠",
+        "defaultDuration": "12 min"
+    },
+    {
+        "folder": "phase-1",
+        "phase": 1,
+        "title": "Python for AI",
+        "shortTitle": "Python",
+        "icon": "🐍",
+        "description": "Master the programming language that powers modern AI and machine learning.",
+        "memeOnComplete": "print('You are now dangerous') 🐍",
+        "defaultDuration": "15 min"
+    },
+    {
+        "folder": "phase-2",
+        "phase": 2,
+        "title": "Mathematics for AI",
+        "shortTitle": "Mathematics",
+        "icon": "📐",
+        "description": "The mathematical foundations that power every AI algorithm — linear algebra, calculus, probability, and statistics.",
+        "memeOnComplete": "Bro survived backpropagation 💀",
+        "defaultDuration": "15 min"
+    },
+    {
+        "folder": "phase-3",
+        "phase": 3,
+        "title": "Data Science & Analytics",
+        "shortTitle": "Data",
+        "icon": "📊",
+        "description": "Learn to collect, clean, analyze, and visualize data — the fuel that powers AI.",
+        "memeOnComplete": "Data has been wrangled successfully 🤠",
+        "defaultDuration": "15 min"
+    },
+    {
+        "folder": "phase-4",
+        "phase": 4,
+        "title": "Machine Learning",
+        "shortTitle": "Machine Learning",
+        "icon": "⚙️",
+        "description": "Classical machine learning algorithms — supervised, unsupervised, and everything in between.",
+        "memeOnComplete": "Model has been trained. Loss is low. Life is good. 📉",
+        "defaultDuration": "18 min"
+    },
+    {
+        "folder": "phase-5",
+        "phase": 5,
+        "title": "Deep Learning",
+        "shortTitle": "Deep Learning",
+        "icon": "🧠",
+        "description": "Neural networks, backpropagation, CNNs, RNNs, and the architectures that changed everything.",
+        "memeOnComplete": "Your neurons are now fully connected 🧠⚡",
+        "defaultDuration": "18 min"
+    },
+    {
+        "folder": "phase-6",
+        "phase": 6,
+        "title": "Natural Language Processing",
+        "shortTitle": "NLP",
+        "icon": "💬",
+        "description": "Teaching machines to understand, generate, and process human language.",
+        "memeOnComplete": "Language model unlocked 💬🔓",
+        "defaultDuration": "15 min"
+    },
+    {
+        "folder": "phase-7",
+        "phase": 7,
+        "title": "Transformers",
+        "shortTitle": "Transformers",
+        "icon": "⚡",
+        "description": "The architecture that revolutionized AI — self-attention, BERT, GPT, and the Transformer revolution.",
+        "memeOnComplete": "Attention is all you needed 👀",
+        "defaultDuration": "20 min"
+    },
+    {
+        "folder": "phase-8",
+        "phase": 8,
+        "title": "Generative AI",
+        "shortTitle": "GenAI",
+        "icon": "✨",
+        "description": "Large Language Models, prompt engineering, fine-tuning, and the GenAI revolution.",
+        "memeOnComplete": "You can now talk to the machines ✨🤖",
+        "defaultDuration": "18 min"
+    },
+    {
+        "folder": "phase-9",
+        "phase": 9,
+        "title": "Retrieval-Augmented Generation",
+        "shortTitle": "RAG",
+        "icon": "🔍",
+        "description": "Combining retrieval with generation — vector databases, embeddings, and grounded AI.",
+        "memeOnComplete": "Context window expanded successfully 🔍📚",
+        "defaultDuration": "18 min"
+    },
+    {
+        "folder": "phase-10",
+        "phase": 10,
+        "title": "AI Agents",
+        "shortTitle": "Agents",
+        "icon": "🤝",
+        "description": "Autonomous AI systems that plan, reason, use tools, and take action.",
+        "memeOnComplete": "Your agent is now autonomous 🤝🚀",
+        "defaultDuration": "18 min"
+    },
+    {
+        "folder": "phase-11",
+        "phase": 11,
+        "title": "MLOps & Deployment",
+        "shortTitle": "MLOps",
+        "icon": "🚀",
+        "description": "Taking AI from notebook to production — deployment, monitoring, and ML operations.",
+        "memeOnComplete": "Deployed to production without breaking anything 🚀🎉",
+        "defaultDuration": "15 min"
+    },
+    {
+        "folder": "phase-12",
+        "phase": 12,
+        "title": "AI Safety & Ethics",
+        "shortTitle": "AI Safety",
+        "icon": "🛡️",
+        "description": "Responsible AI — bias, fairness, alignment, interpretability, and the future of safe AI.",
+        "memeOnComplete": "AI alignment researcher unlocked 🛡️🧠",
+        "defaultDuration": "15 min"
+    }
+]

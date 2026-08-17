@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Meme University PDF Viewer — Read AI lessons with an interactive PDF viewer.">
+    <title>Lesson Viewer — AI Meme University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/viewer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Course navigation">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo" aria-label="AI Meme University Home">
+                    <span class="logo-icon">🧠</span>
+                    <span>AI Meme U</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-progress">
+                    <div class="sidebar-progress-label">
+                        <span>Overall Progress</span>
+                        <span id="sidebarProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="sidebarProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content" id="mainContent">
+            <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+                <div class="navbar-left">
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open navigation menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="roadmap.html" class="nav-link">Roadmap</a>
+                        <a href="about.html" class="nav-link">About</a>
+                    </div>
+                </div>
+                <div class="navbar-right">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="search" class="search-input" id="searchInput" placeholder="Search lessons..." aria-label="Search lessons" autocomplete="off">
+                        </div>
+                        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Viewer Header -->
+            <div class="viewer-header" id="viewerHeader">
+                <div class="viewer-header-inner">
+                    <div class="viewer-title-group">
+                        <a href="index.html" class="back-link" id="backToPhaseLink" style="margin-bottom:0">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            Back
+                        </a>
+                        <span class="viewer-lesson-number" id="viewerLessonNum">PPT 01</span>
+                        <span class="viewer-lesson-title" id="viewerLessonTitle">Loading...</span>
+                    </div>
+                    <div class="viewer-controls">
+                        <!-- Zoom Out -->
+                        <button class="viewer-control-btn" id="zoomOutBtn" aria-label="Zoom out" title="Zoom out">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                        </button>
+
+                        <span class="viewer-zoom-display" id="zoomDisplay">100%</span>
+
+                        <!-- Zoom In -->
+                        <button class="viewer-control-btn" id="zoomInBtn" aria-label="Zoom in" title="Zoom in">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                        </button>
+
+                        <div class="control-divider"></div>
+
+                        <!-- Fit Width -->
+                        <button class="viewer-control-btn" id="fitWidthBtn" aria-label="Fit width" title="Fit to width">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                        </button>
+
+                        <!-- Fullscreen -->
+                        <button class="viewer-control-btn" id="fullscreenBtn" aria-label="Fullscreen" title="Fullscreen">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><polyline points="21 15 21 21 15 21"/><polyline points="3 9 3 3 9 3"/></svg>
+                        </button>
+
+                        <div class="control-divider"></div>
+
+                        <!-- Download -->
+                        <button class="viewer-control-btn" id="downloadBtn" aria-label="Download PDF" title="Download PDF">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </button>
+
+                        <!-- Open in New Tab -->
+                        <button class="viewer-control-btn" id="openTabBtn" aria-label="Open in new tab" title="Open in new tab">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF Canvas -->
+            <div class="viewer-canvas-container" id="canvasContainer">
+                <!-- Loading state -->
+                <div class="viewer-loading" id="viewerLoading">
+                    <div class="viewer-loading-spinner"></div>
+                    <span class="viewer-loading-text">Loading presentation...</span>
+                </div>
+
+                <!-- Error state -->
+                <div class="viewer-error" id="viewerError" style="display: none;">
+                    <span class="viewer-error-icon">📄</span>
+                    <h3>Unable to load PDF</h3>
+                    <p id="viewerErrorText">The PDF file could not be found. Make sure the file exists in the correct path.</p>
+                    <a href="index.html" class="btn btn-primary mt-4">← Back to Curriculum</a>
+                </div>
+
+                <!-- PDF Canvas -->
+                <div class="pdf-canvas-wrapper" id="pdfCanvasWrapper" style="display: none;">
+                    <canvas id="pdfCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Page Navigation -->
+            <div class="viewer-page-nav" id="viewerPageNav">
+                <div class="viewer-page-nav-inner">
+                    <button class="page-nav-btn" id="prevPageBtn" aria-label="Previous page">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        Previous
+                    </button>
+
+                    <div class="page-indicator">
+                        Page
+                        <input type="number" class="page-jump-input" id="pageJumpInput" min="1" value="1" aria-label="Jump to page">
+                        / <span id="totalPages">0</span>
+                    </div>
+
+                    <button class="page-nav-btn" id="nextPageBtn" aria-label="Next page">
+                        Next
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lesson Navigation -->
+            <div class="viewer-lesson-nav" id="viewerLessonNav">
+                <div class="viewer-lesson-nav-inner">
+                    <div class="lesson-nav-grid">
+                        <a class="lesson-nav-item prev" id="prevLessonLink" href="#">
+                            <span class="lesson-nav-label">← Previous Lesson</span>
+                            <span class="lesson-nav-title" id="prevLessonTitle">—</span>
+                        </a>
+
+                        <div class="lesson-nav-center">
+                            <button class="mark-complete-btn" id="markCompleteBtn" aria-label="Mark as completed">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span id="markCompleteBtnText">Mark as Completed</span>
+                            </button>
+                            <a href="index.html" class="btn btn-ghost btn-sm" id="backToPhaseBtn">← Back to Phase</a>
+                        </div>
+
+                        <a class="lesson-nav-item next" id="nextLessonLink" href="#">
+                            <span class="lesson-nav-label">Next Lesson →</span>
+                            <span class="lesson-nav-title" id="nextLessonTitle">—</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Controls -->
+    <div class="fullscreen-controls" id="fullscreenControls">
+        <button class="page-nav-btn" id="fsPrevPageBtn" aria-label="Previous page">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Prev
+        </button>
+        <span class="page-indicator" id="fsPageIndicator" style="color: white;">Page 1 / 1</span>
+        <button class="page-nav-btn" id="fsNextPageBtn" aria-label="Next page">
+            Next
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+    </div>
+
+    <button class="fullscreen-exit-btn" id="fullscreenExitBtn" aria-label="Exit fullscreen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        Exit Fullscreen
+    </button>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- PDF.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script src="js/curriculum.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/viewer.js"></script>
+</body>
+</html>

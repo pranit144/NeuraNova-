@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About AI Meme University — Learn about the mission, structure, and philosophy behind this AI learning platform.">
+    <title>About — AI Meme University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Course navigation">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo" aria-label="AI Meme University Home">
+                    <span class="logo-icon">🧠</span>
+                    <span>AI Meme U</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-progress">
+                    <div class="sidebar-progress-label">
+                        <span>Overall Progress</span>
+                        <span id="sidebarProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="sidebarProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content" id="mainContent">
+            <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+                <div class="navbar-left">
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open navigation menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="roadmap.html" class="nav-link">Roadmap</a>
+                        <a href="about.html" class="nav-link active">About</a>
+                    </div>
+                </div>
+                <div class="navbar-right">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="search" class="search-input" id="searchInput" placeholder="Search lessons..." aria-label="Search lessons" autocomplete="off">
+                        </div>
+                        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="content-wrapper">
+                <div class="about-section">
+                    <div class="about-header">
+                        <h1>🧠 About AI Meme University</h1>
+                        <p>
+                            A structured, self-paced AI learning curriculum designed to take you from
+                            <strong>"What is AI?"</strong> to building real-world AI systems —
+                            with just enough memes to keep you going.
+                        </p>
+                    </div>
+
+                    <div class="about-stats" id="aboutStats">
+                        <div class="about-stat">
+                            <div class="about-stat-value" id="aboutStatPhases">13</div>
+                            <div class="about-stat-label">Phases</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-value" id="aboutStatLessons">84</div>
+                            <div class="about-stat-label">Lessons</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-value" id="aboutStatCompleted">0</div>
+                            <div class="about-stat-label">Completed</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-value" id="aboutStatProgress">0%</div>
+                            <div class="about-stat-label">Progress</div>
+                        </div>
+                    </div>
+
+                    <div class="about-content">
+                        <h2>🎯 What Is This?</h2>
+                        <p>
+                            AI Meme University is a comprehensive AI/ML learning platform built around a series of
+                            PDF presentations. Each lesson covers a specific topic, organized into phases that
+                            build on each other progressively.
+                        </p>
+                        <p>
+                            The goal isn't just to memorize definitions like <em>"AI is the simulation of human intelligence
+                            by machines."</em> That's boring. 💀 The goal is to actually understand how things work
+                            under the hood.
+                        </p>
+
+                        <h2>📚 Curriculum Structure</h2>
+                        <p>The curriculum is organized into 13 phases:</p>
+                        <ul id="aboutPhaseList">
+                            <!-- Populated by app.js -->
+                        </ul>
+
+                        <h2>🔧 How It Works</h2>
+
+                        <div class="about-card">
+                            <h3>📖 PDF-Based Learning</h3>
+                            <p>
+                                Each lesson is a PDF presentation rendered directly in your browser using PDF.js.
+                                No downloads needed — just click and learn.
+                            </p>
+                        </div>
+
+                        <div class="about-card">
+                            <h3>💾 Progress Tracking</h3>
+                            <p>
+                                Your progress is saved locally in your browser using localStorage. Mark lessons as
+                                complete, and the website remembers where you left off — even the exact PDF page.
+                            </p>
+                        </div>
+
+                        <div class="about-card">
+                            <h3>🔍 Search</h3>
+                            <p>
+                                Use the global search to find any lesson by title, description, or phase.
+                                Need to find "transformer"? It'll show you every relevant lesson instantly.
+                            </p>
+                        </div>
+
+                        <div class="about-card">
+                            <h3>📱 Responsive Design</h3>
+                            <p>
+                                Works on desktop, tablet, and mobile. The sidebar collapses into a hamburger menu
+                                on smaller screens, and the PDF viewer remains usable on all devices.
+                            </p>
+                        </div>
+
+                        <h2>🤔 Philosophy</h2>
+                        <p>
+                            This platform follows a simple philosophy:
+                        </p>
+                        <ul>
+                            <li><strong>Sequential learning</strong> — topics build on each other</li>
+                            <li><strong>Depth over breadth</strong> — understand the "why", not just the "what"</li>
+                            <li><strong>Self-paced</strong> — go at your own speed</li>
+                            <li><strong>No fluff</strong> — every lesson has a purpose</li>
+                            <li><strong>Memes welcome</strong> — because learning should be fun 🧠</li>
+                        </ul>
+
+                        <h2>🚀 Getting Started</h2>
+                        <p>
+                            Head to the <a href="index.html">Home page</a> and click <strong>Start Learning</strong>,
+                            or check out the <a href="roadmap.html">Roadmap</a> to see the full curriculum.
+                            Your first lesson: <em>What Is Artificial Intelligence?</em>
+                        </p>
+
+                        <div class="about-card" style="text-align: center; margin-top: var(--space-8);">
+                            <h3 style="margin-bottom: var(--space-1);">Ready to start?</h3>
+                            <p style="margin-bottom: var(--space-4); color: var(--color-text-muted);">
+                                "The journey of a thousand epochs begins with a single gradient step." 🧠
+                            </p>
+                            <a href="index.html" class="btn btn-primary btn-lg">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Start Learning
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <script src="js/curriculum.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

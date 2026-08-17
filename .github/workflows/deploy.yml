@@ -1,0 +1,57 @@
+name: Build Curriculum & Deploy
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'pdfs/**'
+      - 'phase-config.json'
+      - 'build_curriculum.py'
+      - '**.html'
+      - 'css/**'
+      - 'js/**'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build curriculum.js from PDFs
+        run: python build_curriculum.py
+
+      - name: Commit updated curriculum.js (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/curriculum.js
+          # Only commit if there are changes
+          git diff --cached --quiet || git commit -m "🤖 Auto-update curriculum.js from PDF files"
+          git push || echo "Nothing to push"
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
